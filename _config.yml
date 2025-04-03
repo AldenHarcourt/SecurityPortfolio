@@ -1,0 +1,5 @@
+title: SecurityPortfolio
+description: A documented journey through cybersecurity lab experiments and learning.
+theme: minima  # GitHub Pages offers several built-in themes; "minima" is clean and professional.
+baseurl: ""  # Leave blank if not deploying to a subfolder.
+url: "https://AldenHarcourt.github.io/SecurityPortfolio"
