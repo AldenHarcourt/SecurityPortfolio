@@ -37,7 +37,25 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
 main {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
   padding: 20px;
   max-width: 800px;
   margin: auto;
