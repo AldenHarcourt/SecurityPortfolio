@@ -44,3 +44,13 @@ app.post('/submit-contact', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+<nav>
+  <ul>
+    <li><a href="/repo-name/index.html">Home</a></li>
+    <li><a href="/repo-name/pages/about.html">About</a></li>
+    <li><a href="/repo-name/pages/portfolio.html">Portfolio</a></li>
+    <li><a href="/repo-name/pages/blog.html">Blog</a></li>
+    <li><a href="/repo-name/pages/contact.html">Contact</a></li>
+  </ul>
+</nav>
