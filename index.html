@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Testing Site</title>
+</head>
+<body>
+    <h1>Welcome to My Testing Site!</h1>
+    <p>This site is being set up for pen-testing practice.</p>
+
+    <h2>Vulnerable Pages</h2>
+    <ul>
+        <li>
+            <a href="vuln_xss.php">VULNERABLE PAGE: Simple XSS lab (for testing)</a>
+        </li>
+        <li>
+            <a href="vuln_sql.php">VULNERABLE PAGE: Simple SQL injection lab (for testing)</a>
+        </li>
+        <li>
+            <a href="vuln_cmd.php">VULNERABLE PAGE: Simple command injection lab (for testing)</a>
+        </li>
+    </ul>
+
+    <h2>Secure Pages</h2>
+    <ul>
+        <li>
+            <a href="sec_xss.php">SECURE PAGE: XSS secured with htmlspecialchars</a>
+        </li>
+        <li>
+            <a href="sec_sql.php">SECURE PAGE: SQL injection secured with prepared statements</a>
+        </li>
+        <li>
+            <a href="sec_cmd_escape.php">SECURE PAGE: Command injection secured with escape functions</a>
+        </li>
+        <li>
+            <a href="sec_cmd_whitelist.php">SECURE PAGE: Command injection secured with whitelist</a>
+        </li>
+    </ul>
+</body>
+</html>
+
