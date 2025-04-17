@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Command Injection Lab</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Command Injection Lab</h1>
+    <nav>
+      <a href="/portfolio/index.html">← Back to Portfolio</a>
+    </nav>
+  </header>
+  <main>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        Demonstrates how unsanitized user input in a system command can lead to arbitrary command execution.
+      </p>
+    </section>
+
+    <section id="vulnerable-code">
+      <h2>Vulnerable Code</h2>
+      <pre><code>
+// vuln_cmd.php
+if (isset($_GET['cmd'])) {
+    $command = "ls " . $_GET['cmd'];
+    system($command);
+}
+      </code></pre>
+    </section>
+
+    <section id="exploit-demo">
+      <h2>Exploit Demo</h2>
+      <!-- Example: embed a screenshot or GIF -->
+      <img src="/assets/images/projects/cmd-demo.gif" alt="Command Injection Demo">
+      <p>Example URL: <code>?cmd=-l; cat /etc/passwd</code></p>
+    </section>
+
+    <section id="secure-code">
+      <h2>Secure Code</h2>
+      <pre><code>
+// sec_cmd_escape.php (escaping)
+$userInput = escapeshellcmd($_GET['cmd'] ?? '-l');
+system("ls " . $userInput);
+
+// Or sec_cmd_whitelist.php (whitelist)
+$allowed = ['-l','-la','-a'];
+$opt = in_array($_GET['cmd'] ?? '', $allowed) ? $_GET['cmd'] : '-l';
+system("ls " . $opt);
+      </code></pre>
+    </section>
+
+    <section id="takeaways">
+      <h2>Remediation & Lessons</h2>
+      <ul>
+        <li>Always sanitize or whitelist user‐supplied command arguments.</li>
+        <li><code>escapeshellcmd()</code> prevents shell metacharacters from being interpreted.</li>
+        <li>Whitelisting permissible flags is the safest approach.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Alden Harcourt</p>
+  </footer>
+</body>
+</html>
+

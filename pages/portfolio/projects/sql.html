@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SQL Injection Lab</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>SQL Injection Lab</h1>
+    <nav>
+      <a href="/portfolio/index.html">← Back to Portfolio</a>
+    </nav>
+  </header>
+  <main>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        Shows how interpolating user input into SQL queries without sanitization allows attackers to exfiltrate data.
+      </p>
+    </section>
+
+    <section id="vulnerable-code">
+      <h2>Vulnerable Code</h2>
+      <pre><code>
+// vuln_sql.php
+$id = $_GET['id'];
+$query = "SELECT * FROM users WHERE id = '$id'";
+$result = mysqli_query($conn, $query);
+      </code></pre>
+    </section>
+
+    <section id="exploit-demo">
+      <h2>Exploit Demo</h2>
+      <img src="/assets/images/projects/sql-demo.png" alt="SQL Injection Demo">
+      <p>Example URL: <code>?id=-1' UNION SELECT 1,username,3 FROM users--</code></p>
+    </section>
+
+    <section id="secure-code">
+      <h2>Secure Code</h2>
+      <pre><code>
+// sec_sql.php (prepared statements)
+$stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "i", $_GET['id']);
+mysqli_stmt_execute($stmt);
+      </code></pre>
+    </section>
+
+    <section id="takeaways">
+      <h2>Remediation & Lessons</h2>
+      <ul>
+        <li>Use prepared statements with bound parameters to prevent injection.</li>
+        <li>Never concatenate raw user input into SQL.</li>
+        <li>Escape output with <code>htmlspecialchars()</code> when displaying.</li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Alden Harcourt</p>
+  </footer>
+</body>
+</html>
+
