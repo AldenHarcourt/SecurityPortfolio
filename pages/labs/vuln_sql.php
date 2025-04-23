@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Connect to the database using our dedicated test user
-$conn = mysqli_connect("127.0.0.1", "testuser", "testpassword", "testdb");
+$conn = mysqli_connect("localhost", "testuser", "testpassword", "testdb");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
